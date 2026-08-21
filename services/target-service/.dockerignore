@@ -1,0 +1,6 @@
+node_modules/
+test/
+large-directory/
+search-fixtures/
+optional-noise/
+docs/oversize-reference.md

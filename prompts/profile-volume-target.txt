@@ -1,0 +1,9 @@
+Generate a service profile for `profile-volume-target`.
+
+Authoritative repository context:
+- Repository URL: https://github.com/pdandwani94/service-profile-volume-fixture
+- Component ARI: ari:cloud:compass:fixture:component/profile-volume-target
+- Verified service path: services/target-service
+- Component relation source: service-catalog.json
+
+Use the repository's current immutable head commit for all GitHub file reads. Treat sibling-service content as separate repository context, not target-service evidence. Return only the Generate Service Profile JSON contract.

@@ -1,0 +1,16 @@
+{
+  "components": [
+    {
+      "serviceName": "profile-volume-target",
+      "componentAri": "ari:cloud:compass:fixture:component/profile-volume-target",
+      "repositoryPath": "services/target-service",
+      "owner": "team-volume-fixture"
+    },
+    {
+      "serviceName": "profile-volume-sibling",
+      "componentAri": "ari:cloud:compass:fixture:component/profile-volume-sibling",
+      "repositoryPath": "services/sibling-service",
+      "owner": "team-sibling-fixture"
+    }
+  ]
+}

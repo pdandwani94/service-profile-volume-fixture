@@ -1,0 +1,19 @@
+openapi: 3.1.0
+info:
+  title: Profile Volume Target API
+  version: 1.0.0
+paths:
+  /health/ready:
+    get:
+      operationId: getReadiness
+      responses:
+        '200':
+          description: Ready
+  /v1/volume-orders:
+    post:
+      operationId: createVolumeOrders
+      responses:
+        '202':
+          description: Batch accepted
+        '429':
+          description: volume_limit_exceeded

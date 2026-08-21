@@ -1,0 +1,10 @@
+openapi: 3.1.0
+info:
+  title: Sibling card vault
+  version: 9.0.0
+paths:
+  /v9/card-vault:
+    post:
+      responses:
+        '200':
+          description: Sibling only

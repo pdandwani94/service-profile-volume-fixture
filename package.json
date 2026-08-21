@@ -1,0 +1,11 @@
+{
+  "name": "service-profile-volume-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate-volume-fixtures.mjs",
+    "check": "node scripts/check-fixture.mjs && node --test services/target-service/test/*.test.mjs",
+    "validate-profile": "node scripts/validate-profile.mjs"
+  }
+}

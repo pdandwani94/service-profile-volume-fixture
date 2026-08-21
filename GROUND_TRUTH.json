@@ -1,0 +1,36 @@
+{
+  "targetService": "profile-volume-target",
+  "targetComponentAri": "ari:cloud:compass:fixture:component/profile-volume-target",
+  "targetPath": "services/target-service",
+  "requiredFacts": [
+    "volume_limit_exceeded",
+    "MAX_BATCH_SIZE",
+    "500",
+    "test/service.test.mjs",
+    "test/http.test.mjs",
+    "openapi/current.yaml"
+  ],
+  "requiredQualifiers": [
+    "reference implementation",
+    "deprecated",
+    "generated"
+  ],
+  "forbiddenFacts": [
+    "HOT-999999",
+    "legacy-card-vault",
+    "SIBLING_SECRET",
+    "/v9/card-vault",
+    "team-sibling-fixture"
+  ],
+  "limits": {
+    "maxRawFiles": 20,
+    "maxRawKiB": 250,
+    "maxProviderPayloadKiB": 350,
+    "maxDirectorySearchCalls": 12,
+    "maxInspectionMinutes": 5,
+    "maxSearchResultsPerCall": 20,
+    "maxDirectoryEntriesRetained": 50,
+    "maxFileKiB": 64,
+    "maxNormalizedEvidenceKiB": 300
+  }
+}
