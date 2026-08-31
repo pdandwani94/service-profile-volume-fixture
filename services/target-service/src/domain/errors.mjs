@@ -6,3 +6,13 @@ export class VolumeLimitExceeded extends Error {
     super('volume_limit_exceeded');
   }
 }
+
+export class DuplicateOrderId extends Error {
+  code = 'duplicate_order_id';
+  status = 409;
+
+  constructor(orderId) {
+    super('duplicate_order_id');
+    this.orderId = orderId;
+  }
+}

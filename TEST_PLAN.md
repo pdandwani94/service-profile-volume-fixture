@@ -9,6 +9,18 @@
 
 Always record the repository commit SHA used by a run.
 
+## Stage 0: code-signal retrieval
+
+Run `prompts/code-signals-target.txt` against the repository at an exact commit SHA. The response must enumerate production feature flags, Prometheus metrics, and Pino event keys from `services/target-service` without copying sibling-service decoys.
+
+Validate the response:
+
+```bash
+pnpm validate-signals -- profiles/code-signals-001.json
+```
+
+The stage passes only when the provider metadata and exact identifier sets match `GROUND_TRUTH.json`, every signal is linked to its production usage path, the revision is a 40-character SHA, and no forbidden sibling signal appears.
+
 ## Stage 1: smoke
 
 Run the prompt in `prompts/profile-volume-target.txt` once through a test Agent Studio agent containing Generate Service Profile.

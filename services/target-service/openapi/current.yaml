@@ -9,11 +9,19 @@ paths:
       responses:
         '200':
           description: Ready
+  /metrics:
+    get:
+      operationId: getPrometheusMetrics
+      responses:
+        '200':
+          description: Prometheus metrics in text exposition format
   /v1/volume-orders:
     post:
       operationId: createVolumeOrders
       responses:
         '202':
           description: Batch accepted
+        '409':
+          description: duplicate_order_id
         '429':
           description: volume_limit_exceeded

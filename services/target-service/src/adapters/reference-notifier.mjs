@@ -1,5 +1,5 @@
 export class ReferenceNotifier {
-  notify(orderId) {
+  async notify(orderId) {
     return `reference-notification:${orderId}`;
   }
 }

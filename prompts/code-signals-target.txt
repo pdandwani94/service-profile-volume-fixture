@@ -1,0 +1,12 @@
+Inspect only `services/target-service` in this repository at the exact commit SHA supplied to you. Enumerate the production code signals that are defined and used by this service. Do not use README claims as proof, and do not include signals from sibling services, tests, generated files, or deprecated files.
+
+Return exactly one JSON object with these fields:
+
+- `servicePath`: the inspected service path;
+- `revision`: the exact 40-character commit SHA;
+- `providers`: objects for `featureFlags`, `metrics`, and `logging`, each with `name`, `package`, and `adapterPath`;
+- `featureFlags`: every flag as `key`, `default`, and `usagePath`;
+- `metrics`: every metric as `name`, `type`, and `usagePath`;
+- `logEvents`: every stable structured event as `event`, `level`, and `usagePath`.
+
+Confirm each catalog entry at its production usage site. Sort every signal array lexicographically by its identifier. Return no prose outside the JSON object.

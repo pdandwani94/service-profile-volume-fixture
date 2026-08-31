@@ -3,9 +3,15 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@11.19.0",
   "scripts": {
     "generate": "node scripts/generate-volume-fixtures.mjs",
-    "check": "node scripts/check-fixture.mjs && node --test services/target-service/test/*.test.mjs",
+    "check": "node scripts/check-fixture.mjs && node scripts/check-code-signals.mjs && node --test services/target-service/test/*.test.mjs",
+    "check:signals": "node scripts/check-code-signals.mjs",
+    "validate-signals": "node scripts/validate-code-signals.mjs",
     "validate-profile": "node scripts/validate-profile.mjs"
   }
 }
