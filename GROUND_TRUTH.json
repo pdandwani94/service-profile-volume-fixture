@@ -22,6 +22,121 @@
     "/v9/card-vault",
     "team-sibling-fixture"
   ],
+  "codeSignals": {
+    "featureFlagProvider": {
+      "provider": "LaunchDarkly",
+      "package": "@launchdarkly/node-server-sdk",
+      "fallbackProvider": "local",
+      "adapterPath": "services/target-service/src/feature-flags/launchdarkly-feature-flag-provider.mjs"
+    },
+    "featureFlags": [
+      {
+        "symbol": "REJECT_DUPLICATE_ORDER_IDS",
+        "key": "volume-orders.reject-duplicate-order-ids",
+        "default": true,
+        "usagePath": "services/target-service/src/application/order-service.mjs"
+      },
+      {
+        "symbol": "SEND_REFERENCE_NOTIFICATIONS",
+        "key": "volume-orders.send-reference-notifications",
+        "default": false,
+        "usagePath": "services/target-service/src/application/order-service.mjs"
+      },
+      {
+        "symbol": "EMIT_AUDIT_LOGS",
+        "key": "volume-orders.emit-audit-logs",
+        "default": true,
+        "usagePath": "services/target-service/src/application/order-service.mjs"
+      }
+    ],
+    "metricProvider": {
+      "provider": "Prometheus",
+      "package": "@prometheus-io/client",
+      "adapterPath": "services/target-service/src/observability/prometheus-order-metrics.mjs",
+      "endpoint": "/metrics"
+    },
+    "metrics": [
+      {
+        "symbol": "ORDERS_CREATED_TOTAL",
+        "name": "profile_volume_orders_created_total",
+        "type": "counter",
+        "usagePath": "services/target-service/src/observability/prometheus-order-metrics.mjs"
+      },
+      {
+        "symbol": "BATCHES_ACCEPTED_TOTAL",
+        "name": "profile_volume_order_batches_accepted_total",
+        "type": "counter",
+        "usagePath": "services/target-service/src/observability/prometheus-order-metrics.mjs"
+      },
+      {
+        "symbol": "BATCH_REJECTIONS_TOTAL",
+        "name": "profile_volume_order_batch_rejections_total",
+        "type": "counter",
+        "usagePath": "services/target-service/src/observability/prometheus-order-metrics.mjs"
+      },
+      {
+        "symbol": "BATCH_SIZE",
+        "name": "profile_volume_order_batch_size",
+        "type": "histogram",
+        "usagePath": "services/target-service/src/observability/prometheus-order-metrics.mjs"
+      },
+      {
+        "symbol": "PROCESSING_DURATION_SECONDS",
+        "name": "profile_volume_order_processing_duration_seconds",
+        "type": "histogram",
+        "usagePath": "services/target-service/src/observability/prometheus-order-metrics.mjs"
+      },
+      {
+        "symbol": "NOTIFICATIONS_TOTAL",
+        "name": "profile_volume_order_notifications_total",
+        "type": "counter",
+        "usagePath": "services/target-service/src/observability/prometheus-order-metrics.mjs"
+      }
+    ],
+    "loggingProvider": {
+      "provider": "Pino",
+      "package": "pino",
+      "adapterPath": "services/target-service/src/observability/logger.mjs",
+      "eventField": "event"
+    },
+    "logEvents": [
+      {
+        "symbol": "FEATURE_FLAG_PROVIDER_READY",
+        "event": "feature_flag.provider.ready",
+        "level": "info",
+        "usagePath": "services/target-service/src/feature-flags/create-feature-flag-provider.mjs"
+      },
+      {
+        "symbol": "FEATURE_FLAG_PROVIDER_FALLBACK",
+        "event": "feature_flag.provider.fallback",
+        "level": "info_or_warn",
+        "usagePath": "services/target-service/src/feature-flags/create-feature-flag-provider.mjs"
+      },
+      {
+        "symbol": "BATCH_ACCEPTED",
+        "event": "volume_order.batch.accepted",
+        "level": "info",
+        "usagePath": "services/target-service/src/application/order-service.mjs"
+      },
+      {
+        "symbol": "BATCH_REJECTED",
+        "event": "volume_order.batch.rejected",
+        "level": "warn",
+        "usagePath": "services/target-service/src/application/order-service.mjs"
+      },
+      {
+        "symbol": "NOTIFICATIONS_DISPATCHED",
+        "event": "volume_order.notifications.dispatched",
+        "level": "info",
+        "usagePath": "services/target-service/src/application/order-service.mjs"
+      }
+    ]
+  },
+  "forbiddenCodeSignals": [
+    "card-vault.enable-secret-export",
+    "card_vault_secret_reads_total",
+    "card_vault.secret_accessed"
+  ],
   "limits": {
     "maxRawFiles": 20,
     "maxRawKiB": 250,

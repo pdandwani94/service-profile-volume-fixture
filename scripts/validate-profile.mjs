@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises';
 
-const inputPath = process.argv[2];
+const [inputPath] = process.argv.slice(2).filter((argument) => argument !== '--');
 if (!inputPath) {
   console.error('Usage: node scripts/validate-profile.mjs <profile-output>');
   process.exit(2);
